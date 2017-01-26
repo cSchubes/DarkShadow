@@ -3,6 +3,7 @@ package com.example.carson.darkshadow;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 
 public class Profile extends AppCompatActivity {
@@ -10,6 +11,7 @@ public class Profile extends AppCompatActivity {
     private Button edit;
     private BitmapDrawable b;
     private BitmapDrawable plus;
+    private Toolbar bottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,9 @@ public class Profile extends AppCompatActivity {
 
         edit = (Button) findViewById(R.id.edit);
 
+        bottom = (Toolbar) findViewById(R.id.my_toolbar);
+        //bottom.setTitle("Test");
+        //bottom.inflateMenu(R.menu.toolbar_menu);
 
         //contacts = (ToggleButton) findViewById(R.id.toggleButton);
         //contacts.setBackgroundColor(Color.DKGRAY);

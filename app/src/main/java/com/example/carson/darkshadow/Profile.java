@@ -4,7 +4,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 
 public class Profile extends AppCompatActivity {
@@ -41,9 +40,5 @@ public class Profile extends AppCompatActivity {
         */
 
         //contacts.setButtonDrawable(R.drawable.addcontact);
-    }
-
-    public void setSelected(View view){
-
     }
 }

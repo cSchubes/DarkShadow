@@ -73,7 +73,8 @@
         android:cropToPadding="false"
         android:layout_below="@+id/toolbartop"
         android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerInParent="true"
+        android:paddingLeft="1dp"/>
 
     <ImageButton
         android:layout_width="wrap_content"

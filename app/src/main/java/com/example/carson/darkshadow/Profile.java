@@ -4,14 +4,15 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 
 public class Profile extends AppCompatActivity {
 
-    private Button edit;
+    private Button edit, toolBar1;
     private BitmapDrawable b;
     private BitmapDrawable plus;
-    private Toolbar bottom;
+    private Toolbar bottom, top;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +20,11 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         edit = (Button) findViewById(R.id.edit);
+        toolBar1 = (Button) findViewById(R.id.toolBar1);
 
         bottom = (Toolbar) findViewById(R.id.my_toolbar);
+        top = (Toolbar) findViewById(R.id.toolbartop);
+        setSupportActionBar(top);
         //bottom.setTitle("Test");
         //bottom.inflateMenu(R.menu.toolbar_menu);
 
@@ -37,5 +41,9 @@ public class Profile extends AppCompatActivity {
         */
 
         //contacts.setButtonDrawable(R.drawable.addcontact);
+    }
+
+    public void setSelected(View view){
+
     }
 }

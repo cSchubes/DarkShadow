@@ -2,7 +2,7 @@
 <android.support.v7.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/profiletoolbar"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
@@ -13,29 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
         <ImageButton
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/back"
-            android:scaleType="fitCenter"
-            android:src="@drawable/backarrowwhite"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:onClick="goHome"
-            android:background="@color/transparent"/>
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/person"
+            android:src="@mipmap/ic_launcher"
+            android:onClick="goToProfile"
+            android:background="@color/transparent"
+            android:layout_alignParentLeft="true"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/profiletitle"
+            android:id="@+id/tabtitle"
             android:layout_centerVertical="true"
             android:textSize="20sp"
             android:textColor="@color/white"
-            android:text="Profile"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_toRightOf="@id/back"/>
-
+            android:layout_toRightOf="@id/person"/>
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -45,6 +39,6 @@
             android:scaleType="fitCenter"
             android:layout_marginRight="15dp"
             android:background="@color/transparent"/>
-
     </RelativeLayout>
+
 </android.support.v7.widget.Toolbar>

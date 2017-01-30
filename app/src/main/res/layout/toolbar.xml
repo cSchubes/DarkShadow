@@ -4,9 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/my_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="46dp"
     android:background="?attr/colorPrimary"
     android:elevation="4dp"
+    android:contentInsetLeft="0dp"
+    android:contentInsetStart="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    android:contentInsetRight="0dp"
+    android:contentInsetEnd="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetEnd="0dp"
     android:layout_alignParentBottom="true"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -21,8 +29,6 @@
                 android:drawableTop="@drawable/feedicon"
                 android:text="Feed"
                 android:textSize="12sp"
-                android:onClick=""
-                android:layout_marginRight="5dp"
                 android:background="@color/transparent"/>
             <Button
                 android:layout_width="wrap_content"
@@ -30,7 +36,6 @@
                 android:id="@+id/person"
                 android:text="Search"
                 android:textSize="12sp"
-                android:layout_marginRight="5dp"
                 android:drawableTop="@drawable/searchicon"
                 android:background="@color/transparent"/>
             <Button
@@ -39,8 +44,6 @@
                 android:id="@+id/person"
                 android:text="Events"
                 android:textSize="12sp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:drawableTop="@drawable/clockicon"
                 android:background="@color/transparent"/>
             <Button
@@ -49,7 +52,6 @@
                 android:id="@+id/person"
                 android:text="Me"
                 android:textSize="12sp"
-                android:layout_marginRight="5dp"
                 android:drawableTop="@drawable/basicprofile"
                 android:background="@color/transparent"/>
 </LinearLayout>

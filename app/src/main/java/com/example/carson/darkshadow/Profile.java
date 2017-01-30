@@ -1,9 +1,11 @@
 package com.example.carson.darkshadow;
 
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 
 public class Profile extends AppCompatActivity {
@@ -22,8 +24,6 @@ public class Profile extends AppCompatActivity {
         toolBar1 = (Button) findViewById(R.id.toolBar1);
 
         bottom = (Toolbar) findViewById(R.id.my_toolbar);
-        top = (Toolbar) findViewById(R.id.toolbartop);
-        setSupportActionBar(top);
         //bottom.setTitle("Test");
         //bottom.inflateMenu(R.menu.toolbar_menu);
 
@@ -40,5 +40,10 @@ public class Profile extends AppCompatActivity {
         */
 
         //contacts.setButtonDrawable(R.drawable.addcontact);
+    }
+
+    public void goHome(View v){
+        Intent intent = new Intent(Profile.this, Container.class);
+        startActivity(intent);
     }
 }

@@ -21,9 +21,6 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         edit = (Button) findViewById(R.id.edit);
-        toolBar1 = (Button) findViewById(R.id.toolBar1);
-
-        bottom = (Toolbar) findViewById(R.id.my_toolbar);
         //bottom.setTitle("Test");
         //bottom.inflateMenu(R.menu.toolbar_menu);
 

@@ -2,57 +2,49 @@
 <android.support.v7.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/my_toolbar"
+    android:id="@+id/profiletoolbar"
     android:layout_width="match_parent"
-    android:layout_height="46dp"
+    android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
-    android:elevation="4dp"
-    android:contentInsetLeft="0dp"
-    android:contentInsetStart="0dp"
-    app:contentInsetLeft="0dp"
-    app:contentInsetStart="0dp"
-    android:contentInsetRight="0dp"
-    android:contentInsetEnd="0dp"
-    app:contentInsetRight="0dp"
-    app:contentInsetEnd="0dp"
-    android:layout_alignParentBottom="true"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-        <LinearLayout
+    app:layout_scrollFlags="scroll|enterAlways"
+    app:popupTheme="@style/AppTheme.PopupOverlay">
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/toolBar1"
-                android:drawableTop="@drawable/feedicon"
-                android:text="Feed"
-                android:textSize="12sp"
-                android:background="@color/transparent"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/person"
-                android:text="Search"
-                android:textSize="12sp"
-                android:drawableTop="@drawable/searchicon"
-                android:background="@color/transparent"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/person"
-                android:text="Events"
-                android:textSize="12sp"
-                android:drawableTop="@drawable/clockicon"
-                android:background="@color/transparent"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/person"
-                android:text="Me"
-                android:textSize="12sp"
-                android:drawableTop="@drawable/basicprofile"
-                android:background="@color/transparent"/>
-</LinearLayout>
+
+        <ImageButton
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/exit"
+            android:scaleType="fitCenter"
+            android:src="@drawable/xiconwhite"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:onClick="goHome"
+            android:background="@color/transparent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profiletitle"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="New Event"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_toRightOf="@id/exit"/>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="fitCenter"
+            android:layout_marginRight="15dp"
+            android:background="@color/transparent"/>
+
+    </RelativeLayout>
     </android.support.v7.widget.Toolbar>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/feed_item_padding_top_bottom"
+    android:paddingBottom="@dimen/feed_item_padding_top_bottom"
+    android:paddingRight="@dimen/feed_item_margin"
+    android:paddingLeft="@dimen/feed_item_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/profilepic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carson Schubert"
+            android:id="@+id/name"
+            android:layout_alignBottom="@+id/profilepic"
+            android:layout_toRightOf="@+id/profilepic"
+            android:layout_marginLeft="2dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12m"
+            android:gravity="center_vertical"
+            android:id="@+id/time"
+            android:layout_alignParentRight="true"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/feed_item_profile_name"
+        android:paddingLeft="@dimen/feed_item_padding_left_right"
+        android:paddingTop="@dimen/feed_item_padding_left_right"
+        android:paddingRight="@dimen/feed_item_padding_left_right"
+        android:paddingBottom="@dimen/feed_item_padding_left_right"
+        android:orientation="vertical"
+        android:background="@drawable/eventborder">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monday"
+                android:id="@+id/day"
+                android:textSize="15sp"
+                android:layout_alignParentLeft="true"
+                android:paddingRight="@dimen/feed_item_time"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/day"
+                android:textSize="15sp"
+                android:text="\@"
+                android:id="@+id/at"
+                android:paddingRight="@dimen/feed_item_time"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/at"
+                android:textSize="15sp"
+                android:text="6pm"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textSize="25sp"
+                android:id="@+id/status"
+                android:textColor="@color/black"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

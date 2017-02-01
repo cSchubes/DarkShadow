@@ -1,9 +1,10 @@
 package com.example.carson.darkshadow;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,7 +16,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class Container extends AppCompatActivity {
 
@@ -37,11 +41,16 @@ public class Container extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView title;
     private String[] tabs = {"Feed", "Notifications", "Events", "Messages"};
+    private Drawable[] icons = new Drawable[4];
+    private Activity a = this;
+    private int previous;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
+
+        previous = 0;
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,6 +59,19 @@ public class Container extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        Drawable feed = getDrawable(R.drawable.feediconwhite);
+        feed.setTint(getResources().getColor(R.color.colorAccent));
+        Drawable notifs = getDrawable(R.drawable.notificonwhite);
+        Drawable events = getDrawable(R.drawable.clockiconwhite);
+        Drawable messages = getDrawable(R.drawable.messagesiconwhite);
+
+        icons[0] = feed;
+        icons[1] = notifs;
+        icons[2] = events;
+        icons[3] = messages;
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -62,7 +84,10 @@ public class Container extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                icons[position].setTint(getResources().getColor(R.color.colorAccent));
+                icons[previous].setTint(getResources().getColor(R.color.white));
                 title.setText(tabs[position]);
+                previous = position;
             }
 
             @Override
@@ -71,16 +96,16 @@ public class Container extends AppCompatActivity {
             }
         });
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         setUpTabIcons();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(Container.this, EventCreator.class);
+                startActivity(intent);
             }
         });
 
@@ -92,10 +117,11 @@ public class Container extends AppCompatActivity {
     }
 
     public void setUpTabIcons(){
-        tabLayout.getTabAt(0).setIcon(R.drawable.feediconwhite);
-        tabLayout.getTabAt(1).setIcon(R.drawable.notificonwhite);
-        tabLayout.getTabAt(2).setIcon(R.drawable.clockiconwhite);
-        tabLayout.getTabAt(3).setIcon(R.drawable.messagesiconwhite);
+        for(int i = 0; i<4; i++){
+            View v = getLayoutInflater().inflate(R.layout.tabview, null);
+            v.findViewById(R.id.icon).setBackground(icons[i]);
+            tabLayout.getTabAt(i).setCustomView(v);
+        }
     }
 
     /*
@@ -159,6 +185,50 @@ public class Container extends AppCompatActivity {
         }
     }
 
+    public static class FeedFragment extends Fragment {
+
+        public FeedFragment(){
+
+        }
+
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+            View rootView = inflater.inflate(R.layout.feed_fragment, container, false);
+
+            ListView feed = (ListView) rootView.findViewById(R.id.feed);
+
+            FeedItem me = new FeedItem("Carson Schubert", "Hit the Gym", rootView.getResources().getDrawable(R.mipmap.ic_launcher), "12m");
+            FeedItem two = new FeedItem("Rizwan Lubis", "WHOAAAAAA", rootView.getResources().getDrawable(R.drawable.drafticon), "1h");
+            FeedItem three = new FeedItem("Rizwan Lubis", "WHOAAAAAA", rootView.getResources().getDrawable(R.drawable.drafticon), "1h");
+            FeedItem four = new FeedItem("Rizwan Lubis", "WHOAAAAAA", rootView.getResources().getDrawable(R.drawable.drafticon), "1h");
+            FeedItem five = new FeedItem("Rizwan Lubis", "WHOAAAAAA", rootView.getResources().getDrawable(R.drawable.drafticon), "1h");
+            FeedItem six = new FeedItem("Carson Schubert", "Hey whats up?", rootView.getResources().getDrawable(R.mipmap.ic_launcher), "12m");
+            FeedItem seven = new FeedItem("Carson Schubert", "Hey whats up?", rootView.getResources().getDrawable(R.mipmap.ic_launcher), "12m");
+            FeedItem eight = new FeedItem("Carson Schubert", "Hey whats up?", rootView.getResources().getDrawable(R.mipmap.ic_launcher), "12m");
+            FeedItem nine = new FeedItem("Carson Schubert", "Hey whats up?", rootView.getResources().getDrawable(R.mipmap.ic_launcher), "12m");
+
+
+
+            ArrayList<FeedItem> items = new ArrayList<FeedItem>();
+
+            items.add(me);
+            items.add(two);
+            items.add(three);
+            items.add(four);
+            items.add(five);
+            items.add(six);
+            items.add(seven);
+            items.add(eight);
+            items.add(nine);
+
+
+            FeedAdapter adapter = new FeedAdapter(getActivity(), 15, items);
+            adapter.notifyDataSetChanged();
+            feed.setAdapter(adapter);
+
+            return rootView;
+        }
+    }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -173,7 +243,10 @@ public class Container extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            if(position == 0)
+                return new FeedFragment();
+            else
+                return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
@@ -181,9 +254,6 @@ public class Container extends AppCompatActivity {
             return 4;
         }
 
-        public void onPageSelected(int position){
-            title.setText(tabs[position]);
-        }
     }
 
 }

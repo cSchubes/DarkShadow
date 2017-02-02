@@ -43,4 +43,9 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(Profile.this, Container.class);
         startActivity(intent);
     }
+
+    public void goSettings(View v){
+        Intent intent = new Intent(Profile.this, Settings.class);
+        startActivity(intent);
+    }
 }

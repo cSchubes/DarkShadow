@@ -30,12 +30,14 @@
             android:layout_alignBottom="@+id/profilepic"
             android:layout_toRightOf="@+id/profilepic"
             android:layout_marginLeft="2dp"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:textColor="@color/feedback"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12m"
+            android:textColor="@color/feedback"
             android:gravity="center_vertical"
             android:id="@+id/time"
             android:layout_alignParentRight="true"
@@ -95,6 +97,18 @@
                 android:textSize="25sp"
                 android:id="@+id/status"
                 android:textColor="@color/black"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/going"
+                android:textAlignment="center"
+                android:text="I'LL GO"
+                android:onClick="goButton"
+                android:minHeight="30dp"
+                android:layout_marginRight="@dimen/feed_item_padding_left_right"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/border"/>
 
         </RelativeLayout>
 

@@ -2,10 +2,12 @@
 <resources>
     <color name="colorPrimary">#344055</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF0022</color>
-    <color name="monday">#266DD3</color>
+    <color name="colorAccent">#28CC77</color>
+    <color name="monday">#C6F4DF</color>
+    <color name="going">#47FF47</color>
     <color name="textColor">#800000</color>
     <color name="white">#ffffff</color>
     <color name="transparent">#00000000</color>
     <color name="black">#000000</color>
+    <color name="feedback">#2B3546</color>
 </resources>

@@ -16,10 +16,14 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static com.example.carson.darkshadow.R.drawable.searchiconwhite;
 
 public class Container extends AppCompatActivity {
 
@@ -44,6 +48,7 @@ public class Container extends AppCompatActivity {
     private Drawable[] icons = new Drawable[4];
     private Activity a = this;
     private int previous;
+    private Button goBut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,9 @@ public class Container extends AppCompatActivity {
         previous = 0;
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Drawable search = getDrawable(searchiconwhite);
+        search.setTint(getResources().getColor(R.color.colorPrimary));
+        ((ImageButton)toolbar.findViewById(R.id.search)).setImageDrawable(search);
         setSupportActionBar(toolbar);
         title = (TextView) findViewById(R.id.tabtitle);
         title.setText(tabs[0]);
@@ -62,11 +70,10 @@ public class Container extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        Drawable feed = getDrawable(R.drawable.feediconwhite);
-        feed.setTint(getResources().getColor(R.color.colorAccent));
-        Drawable notifs = getDrawable(R.drawable.notificonwhite);
-        Drawable events = getDrawable(R.drawable.clockiconwhite);
-        Drawable messages = getDrawable(R.drawable.messagesiconwhite);
+        Drawable feed = getDrawable(R.drawable.homeicon);
+        Drawable notifs = getDrawable(R.drawable.notificonfull);
+        Drawable events = getDrawable(R.drawable.clockiconfull);
+        Drawable messages = getDrawable(R.drawable.messagesiconfull);
 
         icons[0] = feed;
         icons[1] = notifs;
@@ -85,7 +92,7 @@ public class Container extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 icons[position].setTint(getResources().getColor(R.color.colorAccent));
-                icons[previous].setTint(getResources().getColor(R.color.white));
+                icons[previous].setTint(getResources().getColor(R.color.colorPrimary));
                 title.setText(tabs[position]);
                 previous = position;
             }
@@ -99,8 +106,12 @@ public class Container extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         setUpTabIcons();
+        icons[0].setTint(getResources().getColor(R.color.colorAccent));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        Drawable fabImage = (Drawable) getDrawable(R.drawable.drafticon);
+        fabImage.setTint(getResources().getColor(R.color.black));
+        fab.setImageDrawable(fabImage);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +122,18 @@ public class Container extends AppCompatActivity {
 
     }
 
+    public void goButton(View v){
+        goBut = (Button) v.findViewById(R.id.going);
+        if(goBut.getText().equals("I'LL GO")){
+            goBut.setText("GOING");
+            goBut.setBackgroundResource(R.drawable.goingborder);
+        }
+        else{
+            goBut.setText("I'LL GO");
+            goBut.setBackgroundResource(R.drawable.border);
+        }
+    }
+
     public void goToProfile(View v){
         Intent intent = new Intent(Container.this, Profile.class);
         startActivity(intent);
@@ -118,7 +141,12 @@ public class Container extends AppCompatActivity {
 
     public void setUpTabIcons(){
         for(int i = 0; i<4; i++){
-            View v = getLayoutInflater().inflate(R.layout.tabview, null);
+            icons[i].setTint(getResources().getColor(R.color.colorPrimary));
+            View v;
+            if(i==2)
+                v = getLayoutInflater().inflate(R.layout.clocktabview,null);
+            else
+                v = getLayoutInflater().inflate(R.layout.tabview, null);
             v.findViewById(R.id.icon).setBackground(icons[i]);
             tabLayout.getTabAt(i).setCustomView(v);
         }

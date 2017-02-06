@@ -5,7 +5,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/white"
+    android:background="?attr/colorPrimary"
     app:layout_scrollFlags="scroll|enterAlways"
     app:popupTheme="@style/AppTheme.PopupOverlay">
 
@@ -29,7 +29,7 @@
             android:id="@+id/tabtitle"
             android:layout_centerVertical="true"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="?attr/titleTextColor"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_toRightOf="@id/person"/>
         <ImageButton
@@ -39,6 +39,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:src="@drawable/searchiconwhite"
+            android:tint="?attr/titleTextColor"
             android:scaleType="fitCenter"
             android:layout_marginRight="15dp"
             android:background="@color/transparent"/>

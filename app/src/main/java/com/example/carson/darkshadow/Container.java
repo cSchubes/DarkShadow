@@ -11,19 +11,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import static com.example.carson.darkshadow.R.drawable.searchiconwhite;
 
 public class Container extends AppCompatActivity {
 
@@ -49,18 +47,27 @@ public class Container extends AppCompatActivity {
     private Activity a = this;
     private int previous;
     private Button goBut;
+    private int iconTint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.DarkTheme);
+            iconTint = getResources().getColor(R.color.white);
+        }else{
+            setTheme(R.style.LightTheme);
+            iconTint = getResources().getColor(R.color.colorPrimary);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
 
         previous = 0;
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        Drawable search = getDrawable(searchiconwhite);
-        search.setTint(getResources().getColor(R.color.colorPrimary));
-        ((ImageButton)toolbar.findViewById(R.id.search)).setImageDrawable(search);
+        //Drawable search = getDrawable(searchiconwhite);
+        //search.setTint(getResources().getColor(R.color.colorPrimary));
+        //((ImageButton)toolbar.findViewById(R.id.search)).setImageDrawable(search);
         setSupportActionBar(toolbar);
         title = (TextView) findViewById(R.id.tabtitle);
         title.setText(tabs[0]);
@@ -92,7 +99,7 @@ public class Container extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 icons[position].setTint(getResources().getColor(R.color.colorAccent));
-                icons[previous].setTint(getResources().getColor(R.color.colorPrimary));
+                icons[previous].setTint(iconTint);
                 title.setText(tabs[position]);
                 previous = position;
             }
@@ -122,6 +129,10 @@ public class Container extends AppCompatActivity {
 
     }
 
+    public static void updateUI(){
+
+    }
+
     public void goButton(View v){
         goBut = (Button) v.findViewById(R.id.going);
         if(goBut.getText().equals("I'LL GO")){
@@ -141,7 +152,7 @@ public class Container extends AppCompatActivity {
 
     public void setUpTabIcons(){
         for(int i = 0; i<4; i++){
-            icons[i].setTint(getResources().getColor(R.color.colorPrimary));
+            icons[i].setTint(iconTint);
             View v;
             if(i==2)
                 v = getLayoutInflater().inflate(R.layout.clocktabview,null);
